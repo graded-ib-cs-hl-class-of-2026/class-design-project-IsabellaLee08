@@ -41,5 +41,17 @@ public class Printer {
     public String input() {
         return in.nextLine();
     }
+    public void saveFlashcards(String filename, List<Flashcard> flashcards) {
+        try (PrintWriter writer = new PrintWriter(new File(filename))) {
+            for (Flashcard card : flashcards) {
+                writer.println(card.toFileString());
+            }
+            System.out.println("Flashcards saved.");
+        } catch (IOException e) {
+            System.out.println("Error saving flashcards.");
+            
+        }
+    }
+    
 
 }
